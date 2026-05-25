@@ -1,170 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tariff Alert - US Tariff Intelligence for Canadian Customs Brokers</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; }
-        .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
-        header { padding: 1.5rem 0; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.4rem; font-weight: 700; color: #f59e0b; }
-        .nav a { color: #94a3b8; text-decoration: none; margin-left: 1.5rem; font-size: 0.9rem; }
-        .nav a:hover { color: #f59e0b; }
-        .hero { padding: 4rem 0 3rem; text-align: center; }
-        .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }
-        .hero h1 span { color: #f59e0b; }
-        .hero p { font-size: 1.15rem; color: #94a3b8; max-width: 640px; margin: 0 auto 2rem; }
-        .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .btn { display: inline-block; padding: 0.75rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; font-size: 1rem; cursor: pointer; border: none; transition: all 0.2s; }
-        .btn-primary { background: #f59e0b; color: #0f172a; }
-        .btn-primary:hover { background: #d97706; }
-        .btn-secondary { background: transparent; color: #f59e0b; border: 1px solid #f59e0b; }
-        .btn-secondary:hover { background: rgba(245,158,11,0.1); }
-        .features { padding: 3rem 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-        .feature { background: #1e293b; border-radius: 0.75rem; padding: 1.5rem; border: 1px solid #334155; }
-        .feature h3 { color: #f59e0b; margin-bottom: 0.5rem; font-size: 1.1rem; }
-        .feature p { color: #94a3b8; font-size: 0.95rem; }
-        .pricing { padding: 3rem 0; text-align: center; }
-        .pricing h2 { font-size: 1.8rem; margin-bottom: 2rem; }
-        .price-card { background: #1e293b; border: 2px solid #f59e0b; border-radius: 1rem; max-width: 400px; margin: 0 auto; padding: 2rem; }
-        .price-card .amount { font-size: 3rem; font-weight: 800; color: #f59e0b; }
-        .price-card .period { color: #94a3b8; font-size: 0.95rem; }
-        .price-card ul { list-style: none; margin: 1.5rem 0; text-align: left; }
-        .price-card li { padding: 0.4rem 0; color: #cbd5e1; }
-        .price-card li::before { content: "✓ "; color: #f59e0b; font-weight: bold; }
-        footer { padding: 2rem 0; border-top: 1px solid #1e293b; text-align: center; color: #64748b; font-size: 0.85rem; }
-        #signup-section { padding: 3rem 0; text-align: center; }
-        #signup-section h2 { margin-bottom: 1.5rem; }
-        .signup-form { max-width: 420px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; }
-        .signup-form input, .signup-form select { padding: 0.7rem 1rem; border-radius: 0.5rem; border: 1px solid #334155; background: #1e293b; color: #e2e8f0; font-size: 1rem; }
-        .signup-form input::placeholder { color: #64748b; }
-        .signup-form select option { background: #1e293b; }
-        .msg { font-size: 0.9rem; margin-top: 0.5rem; }
-        .msg.ok { color: #4ade80; }
-        .msg.err { color: #f87171; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tariff Alert — US Tariff Intelligence for Canadian Customs Brokers</title>
+  <style>
+    :root{--primary:#f59e0b;--surface:#1e293b;--bg:#0f172a;--text:#e2e8f0;--muted:#94a3b8;--border:#334155}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    .container{max-width:960px;margin:0 auto;padding:0 1.5rem}
+    header{padding:1.5rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+    .logo{font-size:1.4rem;font-weight:700;color:var(--primary)}
+    .nav a{color:var(--muted);text-decoration:none;margin-left:1.5rem;font-size:.9rem}
+    .nav a:hover{color:var(--primary)}
+    .hero{padding:4rem 0 3rem;text-align:center}
+    .hero h1{font-size:2.5rem;font-weight:800;margin-bottom:1rem}
+    .hero h1 span{color:var(--primary)}
+    .hero p{font-size:1.15rem;color:var(--muted);max-width:640px;margin:0 auto 2rem}
+    .cta-group{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn{display:inline-block;padding:.75rem 2rem;border-radius:.5rem;font-weight:600;text-decoration:none;font-size:1rem;cursor:pointer;border:none;transition:all .2s}
+    .btn-primary{background:var(--primary);color:var(--bg)}
+    .btn-primary:hover{background:#d97706}
+    .btn-secondary{background:transparent;color:var(--primary);border:1px solid var(--primary)}
+    .btn-secondary:hover{background:rgba(245,158,11,.1)}
+    .features{padding:3rem 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+    .feature{background:var(--surface);border-radius:.75rem;padding:1.5rem;border:1px solid var(--border)}
+    .feature h3{color:var(--primary);margin-bottom:.5rem;font-size:1.1rem}
+    .feature p{color:var(--muted);font-size:.95rem}
+    .pricing{padding:3rem 0;text-align:center}
+    .pricing h2{font-size:1.8rem;margin-bottom:2rem}
+    .price-card{background:var(--surface);border:2px solid var(--primary);border-radius:1rem;max-width:400px;margin:0 auto;padding:2rem}
+    .price-card .amount{font-size:3rem;font-weight:800;color:var(--primary)}
+    .price-card .period{color:var(--muted);font-size:.95rem}
+    .price-card ul{list-style:none;margin:1.5rem 0;text-align:left}
+    .price-card li{padding:.4rem 0;color:#cbd5e1}
+    .price-card li::before{content:"✓ ";color:var(--primary);font-weight:bold}
+    footer{padding:2rem 0;border-top:1px solid var(--border);text-align:center;color:#64748b;font-size:.85rem}
+    #signup-section{padding:3rem 0;text-align:center}
+    #signup-section h2{margin-bottom:1.5rem}
+    .signup-form{max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:.75rem}
+    .signup-form input,.signup-form select{padding:.7rem 1rem;border-radius:.5rem;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:1rem}
+    .signup-form input::placeholder{color:#64748b}
+    .signup-form select option{background:var(--surface)}
+    .msg{font-size:.9rem;margin-top:.5rem}
+    .msg.ok{color:#4ade80}
+    .msg.err{color:#f87171}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">⚡ Tariff Alert</div>
-            <nav class="nav">
-                <a href="#features">Features</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#signup-section">Sign Up</a>
-            </nav>
-        </header>
+<div class="container">
+  <header>
+    <div class="logo">⚡ Tariff Alert</div>
+    <nav class="nav">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#signup-section">Sign Up</a>
+    </nav>
+  </header>
 
-        <section class="hero">
-            <h1>US Tariff Intelligence<br>for <span>Canadian Customs Brokers</span></h1>
-            <p>Stay ahead of US tariff changes with daily briefings delivered to your inbox. Actionable intel on rates, exemptions, and policy shifts — so you can advise clients before the market reacts.</p>
-            <div class="cta-group">
-                <a href="#signup-section" class="btn btn-primary">Start Free Trial</a>
-                <a href="#features" class="btn btn-secondary">Learn More</a>
-            </div>
-        </section>
-
-        <section class="features" id="features">
-            <div class="feature">
-                <h3>📋 Daily Tariff Briefings</h3>
-                <p>Concise morning reports on tariff rate changes, new executive orders, and trade policy updates — filtered for relevance to Canadian imports.</p>
-            </div>
-            <div class="feature">
-                <h3>🎯 HS Code Tracking</h3>
-                <p>Monitor specific Harmonized System codes that matter to your clients. Get alerts when targeted tariff actions affect the products you broker.</p>
-            </div>
-            <div class="feature">
-                <h3>⚡ Real-Time Alerts</h3>
-                <p>Breaking tariff announcements sent immediately — not next-day. React to surprise tariffs, exemptions, and retaliatory measures within minutes.</p>
-            </div>
-            <div class="feature">
-                <h3>📊 Historical Data</h3>
-                <p>Searchable archive of tariff changes with effective dates and transition periods. Build compliance timelines and audit trails.</p>
-            </div>
-        </section>
-
-        <section class="pricing" id="pricing">
-            <h2>Simple Pricing</h2>
-            <div class="price-card">
-                <div class="amount">$49 CAD</div>
-                <div class="period">per month + tax</div>
-                <ul>
-                    <li>Daily tariff briefings (M-F)</li>
-                    <li>Real-time breaking alerts</li>
-                    <li>HS code tracking</li>
-                    <li>Historical archive access</li>
-                    <li>Email support</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="signup-section">
-            <h2>Get Started</h2>
-            <form class="signup-form" id="signup-form">
-                <input type="email" id="email" placeholder="you@company.com" required>
-                <select id="plan">
-                    <option value="free">Free Trial — 2 weeks free</option>
-                    <option value="paid">Pro Plan — $49 CAD/mo + tax</option>
-                </select>
-                <button type="submit" class="btn btn-primary" id="submit-btn">Start Free Trial</button>
-                <div class="msg" id="msg"></div>
-            </form>
-        </section>
-
-        <footer>
-            <p>&copy; 2025 Tariff Alert. All rights reserved.</p>
-        </footer>
+  <section class="hero">
+    <h1>US Tariff Intelligence<br>for <span>Canadian Customs Brokers</span></h1>
+    <p>Stay ahead of US tariff changes with daily briefings delivered to your inbox. Actionable intel on rates, exemptions, and policy shifts — so you can advise clients before the market reacts.</p>
+    <div class="cta-group">
+      <a href="#signup-section" class="btn btn-primary">Start Free Trial</a>
+      <a href="#features" class="btn btn-secondary">Learn More</a>
     </div>
+  </section>
 
-    <script>
-        const API_URL = window.location.origin;
-        const form = document.getElementById('signup-form');
-        const btn = document.getElementById('submit-btn');
-        const msg = document.getElementById('msg');
-        const planSelect = document.getElementById('plan');
+  <section class="features" id="features">
+    <div class="feature">
+      <h3>📋 Daily Tariff Briefings</h3>
+      <p>Concise morning reports on tariff rate changes, new executive orders, and trade policy updates — filtered for relevance to Canadian imports.</p>
+    </div>
+    <div class="feature">
+      <h3>🎯 HS Code Tracking</h3>
+      <p>Monitor specific Harmonized System codes that matter to your clients. Get alerts when targeted tariff actions affect the products you broker.</p>
+    </div>
+    <div class="feature">
+      <h3>⚡ Real-Time Alerts</h3>
+      <p>Breaking tariff announcements sent immediately — not next-day. React to surprise tariffs, exemptions, and retaliatory measures within minutes.</p>
+    </div>
+    <div class="feature">
+      <h3>📊 Historical Data</h3>
+      <p>Searchable archive of tariff changes with effective dates and transition periods. Build compliance timelines and audit trails.</p>
+    </div>
+  </section>
 
-        function getBtnLabel() {
-            return planSelect.value === 'paid' ? 'Subscribe to Pro' : 'Start Free Trial';
-        }
+  <section class="pricing" id="pricing">
+    <h2>Simple Pricing</h2>
+    <div class="price-card">
+      <div class="amount">$49 CAD</div>
+      <div class="period">per month + tax</div>
+      <ul>
+        <li>Daily tariff briefings (M-F)</li>
+        <li>Real-time breaking alerts</li>
+        <li>HS code tracking</li>
+        <li>Historical archive access</li>
+        <li>Email support</li>
+      </ul>
+    </div>
+  </section>
 
-        planSelect.addEventListener('change', () => {
-            btn.textContent = getBtnLabel();
-        });
+  <section id="signup-section">
+    <h2>Get Started</h2>
+    <form class="signup-form" id="signup-form">
+      <input type="email" id="email" placeholder="you@company.com" required>
+      <select id="plan">
+        <option value="free">Free Trial — 2 weeks free</option>
+        <option value="paid">Pro Plan — $49 CAD/mo + tax</option>
+      </select>
+      <button type="submit" class="btn btn-primary" id="signup-btn">Start Free Trial</button>
+      <div class="msg" id="signup-msg"></div>
+    </form>
+  </section>
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const plan = planSelect.value;
-            msg.textContent = '';
-            msg.className = 'msg';
-            btn.disabled = true;
-            btn.textContent = plan === 'paid' ? 'Processing...' : 'Signing up...';
-            try {
-                const res = await fetch(API_URL + '/api/' + (plan === 'paid' ? 'checkout' : 'signup'), {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email })
-                });
-                const data = await res.json();
-                if (!res.ok) throw new Error(data.detail || 'Signup failed');
-                if (plan === 'paid' && data.url) {
-                    window.location.href = data.url;
-                } else {
-                    msg.textContent = data.status === 'subscribed'
-                        ? '✓ Subscribed! Check your inbox for a confirmation.'
-                        : '✓ ' + (data.message || 'Done!');
-                    msg.className = 'msg ok';
-                    btn.textContent = getBtnLabel();
-                }
-            } catch (err) {
-                msg.textContent = '✗ ' + err.message;
-                msg.className = 'msg err';
-                btn.textContent = getBtnLabel();
-            }
-            btn.disabled = false;
-        });
-    </script>
+  <footer>
+    <p><a href="mailto:tariffalert@gmail.com" style="color:var(--muted)">tariffalert@gmail.com</a></p>
+    <p style="margin-top:8px">Tariff Alert &copy; 2026 &mdash; Daily customs &amp; tariff intelligence for Canadian brokers.</p>
+  </footer>
+</div>
+
+<script>
+const API_URL = window.location.origin;
+
+document.getElementById('signup-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+  const plan = document.getElementById('plan').value;
+  const btn = document.getElementById('signup-btn');
+  const msg = document.getElementById('signup-msg');
+  msg.textContent = '';
+  msg.className = 'msg';
+  btn.disabled = true;
+  btn.textContent = plan === 'paid' ? 'Processing...' : 'Signing up...';
+  try {
+    const res = await fetch(API_URL + '/api/' + (plan === 'paid' ? 'checkout' : 'signup'), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || 'Signup failed');
+    if (plan === 'paid' && data.url) {
+      window.location.href = data.url;
+    } else {
+      msg.textContent = data.status === 'subscribed'
+        ? '✓ Subscribed! Check your inbox for a confirmation.'
+        : '✓ ' + (data.message || 'Done!');
+      msg.className = 'msg ok';
+    }
+  } catch (err) {
+    msg.textContent = '✗ ' + err.message;
+    msg.className = 'msg err';
+  }
+  btn.disabled = false;
+  btn.textContent = plan === 'paid' ? 'Subscribe to Pro' : 'Start Free Trial';
+});
+
+document.getElementById('plan').addEventListener('change', (e) => {
+  document.getElementById('signup-btn').textContent =
+    e.target.value === 'paid' ? 'Subscribe to Pro' : 'Start Free Trial';
+});
+
+// Handle Stripe checkout result params
+const params = new URLSearchParams(window.location.search);
+if (params.get('checkout') === 'success') {
+  const msg = document.getElementById('signup-msg');
+  msg.className = 'success';
+  msg.textContent = 'Payment successful! Welcome to Tariff Alert Pro.';
+}
+if (params.get('checkout') === 'cancelled') {
+  const msg = document.getElementById('signup-msg');
+  msg.className = 'msg err';
+  msg.textContent = 'Checkout cancelled. No charge was made.';
+}
+</script>
 </body>
 </html>
