@@ -82,7 +82,7 @@
           <input type="text" id="company" placeholder="Company name">
         </div>
         <input type="email" id="email" placeholder="your@email.com" required>
-        <select id="plan">
+        <select id="plan" onchange="document.getElementById('signup-btn').textContent=this.value==='paid'?'Subscribe to Pro':'Start Free Trial'">
           <option value="free">Free plan (weekly digest, delayed)</option>
           <option value="paid">Pro plan (daily digest, instant)</option>
         </select>
@@ -152,7 +152,7 @@
           <li>Relevance scoring &amp; filtering</li>
           <li>Keyword alerts (coming soon)</li>
         </ul>
-        <button class="plan-btn primary" onclick="document.getElementById('plan').value='paid';document.getElementById('signup-form').scrollIntoView({behavior:'smooth'})">Start Free Trial</button>
+        <button class="plan-btn primary" onclick="document.getElementById('plan').value='paid';document.getElementById('signup-form').scrollIntoView({behavior:'smooth'})">Subscribe to Pro</button>
       </div>
     </div>
   </div>
@@ -175,9 +175,10 @@ document.getElementById("signup-form").addEventListener("submit", async (e) => {
   const plan = document.getElementById("plan").value;
   if (!email) return;
   btn.disabled = true;
-  btn.textContent = "Signing up...";
+  btn.textContent = plan === "paid" ? "Processing..." : "Signing up...";
   msg.className = "";
   msg.textContent = "";
+  const btnLabel = plan === "paid" ? "Subscribe to Pro" : "Start Free Trial";
   try {
     if (plan === "paid") {
       const resp = await fetch(API_URL + "/api/checkout", {
@@ -194,7 +195,7 @@ document.getElementById("signup-form").addEventListener("submit", async (e) => {
         msg.className = "error";
         msg.textContent = data.detail || "Checkout error. Try the free plan instead.";
         btn.disabled = false;
-        btn.textContent = "Start Free Trial";
+        btn.textContent = btnLabel;
       }
     } else {
       const resp = await fetch(API_URL + "/api/signup", {
@@ -211,13 +212,13 @@ document.getElementById("signup-form").addEventListener("submit", async (e) => {
         msg.textContent = data.detail || "Sign up failed.";
       }
       btn.disabled = false;
-      btn.textContent = "Start Free Trial";
+      btn.textContent = btnLabel;
     }
   } catch (err) {
     msg.className = "error";
     msg.textContent = "Network error. Please try again.";
     btn.disabled = false;
-    btn.textContent = "Start Free Trial";
+    btn.textContent = btnLabel;
   }
 });
 const params = new URLSearchParams(window.location.search);
