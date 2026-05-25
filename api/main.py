@@ -31,7 +31,7 @@ DB_PATH = Path(os.getenv("DB_PATH", "tariff_alert.db"))
 STRIPE_SECRET = os.getenv("STRIPE_SECRET_KEY", "")
 STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET", "")
 STRIPE_PRICE_ID = os.getenv("STRIPE_PRICE_ID", "")
-SITE_URL = os.getenv("SITE_URL", "https://xyanglu.github.io/tariff-alert")
+SITE_URL = os.getenv("SITE_URL", "https://tariff-alert.onrender.com")
 SENDER_EMAIL = os.getenv("SENDER_EMAIL", "tariffalert@gmail.com")
 
 stripe.api_key = STRIPE_SECRET
@@ -67,6 +67,14 @@ def generate_unsub_token(email: str) -> str:
 
 
 # --- Routes ---
+
+@app.get("/")
+def serve_landing():
+    html_path = Path(__file__).parent / "index.html"
+    if html_path.exists():
+        return HTMLResponse(html_path.read_text())
+    return RedirectResponse("https://xyanglu.github.io/tariff-alert/")
+
 
 @app.get("/health")
 def health():
@@ -260,7 +268,7 @@ def unsubscribe_confirm(token: str):
     <h2>You have been unsubscribed</h2>
     <p>{email} will no longer receive Tariff Alert emails.</p>
     <p style="color: #666; font-size: 13px; margin-top: 20px;">
-        <a href="https://xyanglu.github.io/tariff-alert/">Back to Tariff Alert</a>
+        <a href="/">Back to Tariff Alert</a>
     </p>
 </body></html>""")
 
