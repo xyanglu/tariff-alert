@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tariff Alert — Daily Customs & Tariff Intelligence</title>
+<title>Tariff Alert — Daily Customs &amp; Tariff Intelligence</title>
 <style>
   :root { --bg: #0d1117; --surface: #161b22; --border: #30363d; --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff; --green: #3fb950; --orange: #d29922; --red: #f85149; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -75,7 +75,6 @@
     <div class="badge">&#x26A1; Free Beta &#x2014; Limited Spots</div>
     <h1>Tariff &amp; Customs Updates<br>Delivered Daily</h1>
     <p class="tagline">Every morning, get a concise digest of Federal Register changes that affect your brokerage &#x2014; AD/CVD, Section 301/232, HTS modifications, and CBP rulings. Relevance-scored so you see what matters first.</p>
-
     <div class="signup-section">
       <form class="signup-form" id="signup-form">
         <div class="row">
@@ -145,8 +144,8 @@
       </div>
       <div class="pricing-card featured">
         <div class="plan-name">Pro</div>
-        <div class="price">$49</div>
-        <div class="period">per month per brokerage</div>
+        <div class="price">$49 <span style="font-size:1rem">CAD</span></div>
+        <div class="period">per month per brokerage + tax</div>
         <ul class="perks">
           <li>Daily digest at 9 AM ET</li>
           <li>Instant delivery, no delay</li>
@@ -164,10 +163,8 @@
     <p style="margin-top:8px">Tariff Alert &#x2014; Daily customs &amp; tariff intelligence for Canadian brokers.</p>
   </div>
 </footer>
-
 <script>
 const API_URL = "https://tariff-alert.onrender.com";
-
 document.getElementById("signup-form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const btn = document.getElementById("signup-btn");
@@ -176,13 +173,11 @@ document.getElementById("signup-form").addEventListener("submit", async (e) => {
   const name = document.getElementById("name").value.trim();
   const company = document.getElementById("company").value.trim();
   const plan = document.getElementById("plan").value;
-
   if (!email) return;
   btn.disabled = true;
   btn.textContent = "Signing up...";
   msg.className = "";
   msg.textContent = "";
-
   try {
     if (plan === "paid") {
       const resp = await fetch(API_URL + "/api/checkout", {
@@ -225,8 +220,6 @@ document.getElementById("signup-form").addEventListener("submit", async (e) => {
     btn.textContent = "Start Free Trial";
   }
 });
-
-// Check for checkout result in URL params
 const params = new URLSearchParams(window.location.search);
 if (params.get("checkout") === "success") {
   const msg = document.getElementById("signup-msg");
